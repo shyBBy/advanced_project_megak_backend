@@ -6,12 +6,13 @@ import rateLimit from "express-rate-limit";
 import * as cors from "cors";
 import {adRouter} from "./routers/ad";
 import {Router} from "express";
+import {config} from "./config/config";
 
 
 const app = express();
 app.use(express.json());
 app.use(cors({
-    origin: 'http://localhost:3000',
+    origin: config.corsOrigin,
 }));
 app.use(rateLimit({
     windowMs: 5 * 60 * 1000, // 15 minutes
